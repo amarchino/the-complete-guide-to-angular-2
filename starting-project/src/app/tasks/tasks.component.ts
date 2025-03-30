@@ -18,9 +18,6 @@ export class TasksComponent {
 
   constructor(private tasksService: TasksService) {}
 
-  onCompleteTask(id: string) {
-    this.tasksService.removeTask(id);
-  }
   onStartAddTask() {
     this.isAddingTask.set(true);
   }
