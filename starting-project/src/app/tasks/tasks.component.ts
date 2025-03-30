@@ -1,5 +1,6 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
+import { NewTaskComponent } from "./new-task/new-task.component";
 
 const tasks = signal([
   {
@@ -31,15 +32,19 @@ const tasks = signal([
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
-  imports: [TaskComponent]
+  imports: [TaskComponent, NewTaskComponent]
 })
 export class TasksComponent {
   id = input.required<string>();
   name = input.required<string>();
+  isAddingTask = signal(false);
 
   selectedUserTasks = computed(() => tasks().filter((task) => task.userId === this.id()));
 
   onCompleteTask(id: string) {
     tasks.update(currentTasks => currentTasks.filter(task => task.id !== id));
+  }
+  onStartAddTask() {
+    this.isAddingTask.set(true);
   }
 }
