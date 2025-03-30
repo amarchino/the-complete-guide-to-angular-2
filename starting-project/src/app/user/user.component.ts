@@ -9,6 +9,7 @@ import { type User } from './user.model';
 export class UserComponent {
   // Inputs
   readonly user = input.required<User>();
+  readonly selected = input.required<boolean>();
 
   // Outputs
   readonly select = output<string>();
