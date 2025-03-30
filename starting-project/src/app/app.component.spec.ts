@@ -14,10 +14,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'starting-project' title`, () => {
+  it(`should have the users data`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('starting-project');
+    expect(app.users).toHaveSize(6);
   });
 
   it('should render title', () => {
