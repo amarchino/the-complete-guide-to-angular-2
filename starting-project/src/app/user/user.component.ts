@@ -8,17 +8,15 @@ import { Component, computed, input, output } from '@angular/core';
 })
 export class UserComponent {
   // Inputs
-  readonly id = input.required<string>();
-  readonly avatar = input.required<string>();
-  readonly name = input.required<string>();
+  readonly user = input.required<{ id: string, avatar: string, name: string }>();
 
   // Outputs
   readonly select = output<string>();
 
   // Computed properties
-  readonly imagePath = computed(() => `assets/users/${this.avatar()}`);
+  readonly imagePath = computed(() => `assets/users/${this.user().avatar}`);
 
   onSelectUser() {
-    this.select.emit(this.id());
+    this.select.emit(this.user().id);
   }
 }
