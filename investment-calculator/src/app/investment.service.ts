@@ -6,8 +6,7 @@ import { InvestmentOutput } from './investment-output.model';
   providedIn: 'root'
 })
 export class InvestmentService {
-  //resultData = signal<InvestmentOutput[] | undefined>(undefined);
-  resultData: InvestmentOutput[] | undefined = undefined;
+  resultData = signal<InvestmentOutput[] | undefined>(undefined);
 
   calculateInvestmentResults(data: InvestmentInput) {
       const { initialInvestment, annualInvestment, duration, expectedReturn } = data;
@@ -28,7 +27,6 @@ export class InvestmentService {
           totalAmountInvested: initialInvestment + annualInvestment * year,
         });
       }
-      // this.resultData.set(annualData);
-      this.resultData = annualData;
+      this.resultData.set(annualData);
     }
 }
