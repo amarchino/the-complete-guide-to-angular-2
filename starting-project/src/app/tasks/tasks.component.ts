@@ -1,13 +1,11 @@
 import { Component, computed, input, signal } from '@angular/core';
-import { TaskComponent } from "./task/task.component";
-import { NewTaskComponent } from "./new-task/new-task.component";
 import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
+  standalone: false,
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
-  imports: [TaskComponent, NewTaskComponent],
 })
 export class TasksComponent {
   id = input.required<string>();
