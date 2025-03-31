@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Investment } from '../investment.model';
 
 @Component({
   selector: 'app-user-input',
@@ -13,13 +14,14 @@ export class UserInputComponent {
   expectedReturn = signal('5');
   duration = signal('10');
 
+  calculate = output<Investment>();
+
   onSubmit() {
-    console.log('Submitted');
-    console.log(`
-      Initial investment: ${this.initialInvestment()}
-      Annual investment: ${this.annualInvestment()}
-      Expected return: ${this.expectedReturn()}
-      Duration: ${this.duration()}
-    `);
+    this.calculate.emit({
+      initialInvestment: +this.initialInvestment(),
+      annualInvestment: +this.annualInvestment(),
+      expectedReturn: +this.expectedReturn(),
+      duration: +this.duration()
+    });
   }
 }
