@@ -3,6 +3,7 @@ import { HeaderComponent } from "./header/header.component";
 import { UserInputComponent } from "./user-input/user-input.component";
 import { InvestmentResultComponent } from "./investment-result/investment-result.component";
 import { type InvestmentInput } from './investment-input.model';
+import { InvestmentOutput } from './investment-output.model';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { type InvestmentInput } from './investment-input.model';
 })
 export class AppComponent {
   title = 'investment-calculator';
+  results: InvestmentOutput[] = [];
 
 
   onCalculateInvestmentResults(data: InvestmentInput) {
@@ -33,7 +35,7 @@ export class AppComponent {
         totalAmountInvested: initialInvestment + annualInvestment * year,
       });
     }
-    console.log(annualData)
+    this.results = annualData;
   }
 
 }
