@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-trafic',
+  selector: 'app-traffic',
   imports: [],
-  templateUrl: './trafic.component.html',
-  styleUrl: './trafic.component.css'
+  templateUrl: './traffic.component.html',
+  styleUrl: './traffic.component.css'
 })
 export class TraficComponent {
   dummyTrafficData = [
