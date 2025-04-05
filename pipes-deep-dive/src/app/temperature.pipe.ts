@@ -19,7 +19,7 @@ export class TemperaturePipe implements PipeTransform {
       outputTemp = (val - 32) * (5 / 9);
     }
     const symbol: '°C' |'°F' = outputType === 'cel' ? '°C' : '°F';
-    return `${outputTemp} ${symbol}`;
+    return `${outputTemp.toFixed(2)} ${symbol}`;
   }
 
 }
