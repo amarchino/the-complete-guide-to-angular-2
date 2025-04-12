@@ -1,6 +1,6 @@
-import { Component, computed, inject, input, OnInit } from '@angular/core';
+import { Component, inject, input, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { ActivatedRouteSnapshot, ResolveFn, RouterLink, RouterOutlet, RouterStateSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-user-tasks',
@@ -9,13 +9,15 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './user-tasks.component.css',
 })
 export class UserTasksComponent implements OnInit {
-  private readonly usersService = inject(UsersService);
-  userId = input.required<string>();
   message = input.required<string>();
-
-  userName = computed(() => this.usersService.users.find(u => u.id === this.userId())?.name);
+  userName = input.required<string>();
 
   ngOnInit(): void {
     console.log(this.message());
   }
+}
+
+export const resolveUserName: ResolveFn<string> = (route: ActivatedRouteSnapshot, routerState: RouterStateSnapshot) => {
+  const usersService = inject(UsersService);
+  return usersService.users.find(u => u.id === route.paramMap.get('userId'))?.name ?? '';
 }
