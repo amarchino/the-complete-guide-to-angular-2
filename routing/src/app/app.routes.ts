@@ -8,6 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 export const routes: Routes = [
   { path: '', component: NoTaskComponent },
   { path: 'users/:userId', component: UserTasksComponent, children: [
+    { path: '', redirectTo: 'tasks', pathMatch: 'full' },
     { path: 'tasks', component: TasksComponent },
     { path: 'tasks/new', component: NewTaskComponent },
   ]},
