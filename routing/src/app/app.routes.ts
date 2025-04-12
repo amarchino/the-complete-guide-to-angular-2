@@ -5,7 +5,20 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { routes as userRoutes } from './users/users.routes';
 
 export const routes: Routes = [
-  { path: '', component: NoTaskComponent },
-  { path: 'users/:userId', component: UserTasksComponent, children: userRoutes },
-  { path: '**', component: NotFoundComponent }
+  {
+    path: '',
+    component: NoTaskComponent
+  },
+  {
+    path: 'users/:userId',
+    component: UserTasksComponent,
+    children: userRoutes,
+    data: {
+      message: 'Hello!'
+    }
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 ];
