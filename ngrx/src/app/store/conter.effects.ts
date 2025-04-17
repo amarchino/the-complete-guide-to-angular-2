@@ -1,8 +1,9 @@
-import { inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { decrement, increment } from './counter.actions';
 import { tap } from 'rxjs';
 
+@Injectable()
 export class CounterEffects {
   private readonly actions$ = inject(Actions);
 
